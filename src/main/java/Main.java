@@ -1,8 +1,8 @@
-import java.util.Scanner;
-
 public class Main {
-    public static Car[] cars = new Car[3];
-    private static final Scanner scanner = new Scanner(System.in);
+    static  Car firstCar;
+    static  Car secondCar;
+    static  Car thirdCar;
+    static Car fastestCar;
 
     public static void main(String[] args) {
         System.out.println(
@@ -12,31 +12,12 @@ public class Main {
             "======================================================================\n"
         );
 
-        cars = new Car[]{createCar(1)};
-        cars = new Car[]{createCar(2)};
-        cars = new Car[]{createCar(3)};
+        Main.firstCar = Car.createCar(1);
+        Main.secondCar = Car.createCar(2);
+        Main.thirdCar = Car.createCar(3);
+
+        fastestCar = Race.getFastestCar();
+
+        System.out.println("Самая быстрая машина: " + fastestCar.name + " | Пройденная дистанция: " + Race.getDistance(fastestCar.speed) + "км");
     }
-
-    private static Car createCar(int number) {
-        String name;
-        int speed;
-
-        System.out.println("- Введите имя машины №" + number + ":");
-        name = scanner.next();
-
-        while (true) {
-            System.out.println("- Введите скорость машины №" + number + ":");
-            speed = scanner.nextInt();
-
-            if (speed > 0 && speed <= 250) {
-                break;
-            } else {
-                System.out.println("Скорость машины не может быть меньше 0 или больше 250");
-            }
-        }
-
-        return new Car(name, speed);
-    }
-
-
 }

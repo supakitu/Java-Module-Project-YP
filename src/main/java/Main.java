@@ -1,7 +1,7 @@
 public class Main {
-    static  Car firstCar;
-    static  Car secondCar;
-    static  Car thirdCar;
+    static Car firstCar;
+    static Car secondCar;
+    static Car thirdCar;
     static Car fastestCar;
 
     public static void main(String[] args) {
@@ -18,6 +18,6 @@ public class Main {
 
         fastestCar = Race.getFastestCar();
 
-        System.out.println("Самая быстрая машина: " + fastestCar.name + " | Пройденная дистанция: " + Race.getDistance(fastestCar.speed) + "км");
+        System.out.println("Самая быстрая машина: " + fastestCar.name + " || Пройденная дистанция: " + Race.getDistance(fastestCar.speed) + "км");
     }
 }

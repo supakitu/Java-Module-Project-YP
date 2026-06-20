@@ -1,25 +1,15 @@
 public class Race {
-    private static final int ONE_DAY = 24;
+    static Car bestCar;
 
-    public static Car getFastestCar() {
-        if (getDistance(Main.firstCar.speed) > getDistance(Main.secondCar.speed) &&
-                getDistance(Main.firstCar.speed) > getDistance(Main.thirdCar.speed)) {
-
-            return Main.firstCar;
-        } else if (getDistance(Main.secondCar.speed) > getDistance(Main.firstCar.speed) &&
-                getDistance(Main.secondCar.speed) > getDistance(Main.thirdCar.speed)) {
-
-            return Main.secondCar;
-        } else if (getDistance(Main.thirdCar.speed) > getDistance(Main.firstCar.speed) &&
-                getDistance(Main.thirdCar.speed) > getDistance(Main.secondCar.speed)) {
-
-            return Main.thirdCar;
+    public static void findBestCar(Car car) {
+        if (bestCar != null && car.getDistance() > bestCar.getDistance()) {
+            bestCar = car;
+        } else {
+            bestCar = Main.carsList.get(0);
         }
-
-        return null;
     }
 
-    static int getDistance(int speed) {
-        return speed * ONE_DAY;
+    public static int getBestCarDistance() {
+        return bestCar.getDistance();
     }
 }

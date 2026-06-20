@@ -1,29 +1,25 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static Car firstCar;
-    static Car secondCar;
-    static Car thirdCar;
-    static Car fastestCar;
-    static int MIN_CAR_SPEED = 0;
-    static int MAX_CAR_SPEED = 250;
+    static ArrayList<Car> carsList = new ArrayList<>();
+    static final int MIN_CAR_SPEED = 0;
+    static final int MAX_CAR_SPEED = 250;
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println(
-            "======================================================================\n" +
-            "                          24 часа Ле-Мана                              \n" +
-            "                               v1.0                                   \n" +
-            "======================================================================\n"
-        );
+        System.out.println("""
+                ======================================================================
+                                          24 часа Ле-Мана
+                                               v1.0
+                ======================================================================
+                """);
 
-        Main.firstCar = createCar(1);
-        Main.secondCar = createCar(2);
-        Main.thirdCar = createCar(3);
+        for (int i = 1; i <= 3; i++) {
+            carsList.add(createCar(i));
+        }
 
-        fastestCar = Race.getFastestCar();
-
-        System.out.println("Самая быстрая машина: " + fastestCar.name + " || Пройденная дистанция: " + Race.getDistance(fastestCar.speed) + "км");
+        System.out.println("Самая быстрая машина: " + Race.bestCar.getSpeed() + " || Пройденная дистанция: " + Race.bestCar.getDistance() + "км");
     }
 
     public static Car createCar(int carNumber) {
@@ -36,7 +32,7 @@ public class Main {
         while (true) {
             System.out.println("- Введите скорость машины №" + carNumber + ":");
 
-            // Проверяем что ввод это целое число (и оно в диапозоне 1 - 250), если нет цикл продолжает вертется [узнал про hasNextInt() в интернете]
+            // Проверяем что ввод это целое число (и оно в диапазоне 1 - 250), если нет цикл продолжает вертеться [узнал про hasNextInt() в интернете]
             if (sc.hasNextInt()) {
                 speed = sc.nextInt();
 
@@ -46,12 +42,14 @@ public class Main {
                     System.out.println("Скорость автомобиля должна быть больше 0 км/ч и не превышать 250 км/ч.");
                 }
             } else {
-                // после одной итерации цикла с неверным вводом, метод hasNextInt() почему то запоминал это значением и превращял метод в бесконечный
+                // после одной итерации цикла с неверным вводом, метод hasNextInt() почему то запоминал это значением и превращал метод в бесконечный
                 // поэтому я взял у LLM эту строчку
                 sc.next();
                 System.out.println("Скорость автомобиля должна быть целым числом.");
             }
         }
+
+        Race.getBestCar(new Car(name, speed));
 
         return new Car(name, speed);
     }

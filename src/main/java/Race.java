@@ -9,6 +9,10 @@ public class Race {
         }
     }
 
+    public static String getBestCarName() {
+        return bestCar.getName();
+    }
+
     public static int getBestCarDistance() {
         return bestCar.getDistance();
     }

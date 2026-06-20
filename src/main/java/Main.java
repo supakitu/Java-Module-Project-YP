@@ -20,7 +20,7 @@ public class Main {
             Race.findBestCar(carsList.get(i));
         }
 
-        System.out.println("Самая быстрая машина: " + Race.bestCar.getName() + " || Пройденная дистанция: " + Race.getBestCarDistance() + "км");
+        System.out.println("Самая быстрая машина: " + Race.getBestCarName() + " || Пройденная дистанция: " + Race.getBestCarDistance() + "км");
     }
 
     public static Car createCar(int carNumber) {

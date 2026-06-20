@@ -16,7 +16,7 @@ public class Main {
                 """);
 
         for (int i = 0; i <= 2; i++) {
-            carsList.add(createCar(i));
+            carsList.add(createCar(i + 1));
             Race.findBestCar(carsList.get(i));
         }
 
@@ -33,7 +33,7 @@ public class Main {
         while (true) {
             System.out.print("- Введите скорость машины №" + carNumber + ": ");
 
-            // Проверяем что ввод это целое число (и оно в диапазоне 1 - 250), если нет цикл продолжает вертеться [узнал про hasNextInt() в интернете]
+            // узнал про hasNextInt() в интернете
             if (sc.hasNextInt()) {
                 speed = sc.nextInt();
 
@@ -43,7 +43,7 @@ public class Main {
                     System.out.println("Скорость автомобиля должна быть больше 0 км/ч и не превышать 250 км/ч.");
                 }
             } else {
-                // после одной итерации цикла с неверным вводом, метод hasNextInt() почему то запоминал это значением и превращал метод в бесконечный
+                // после одной итерации цикла с неверным вводом, метод hasNextInt() почему то запоминал это значение и превращал метод в бесконечный
                 // поэтому я взял у LLM эту строчку
                 sc.next();
                 System.out.println("Скорость автомобиля должна быть целым числом.");

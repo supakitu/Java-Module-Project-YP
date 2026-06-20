@@ -15,22 +15,23 @@ public class Main {
                 ======================================================================
                 """);
 
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 0; i <= 2; i++) {
             carsList.add(createCar(i));
+            Race.findBestCar(carsList.get(i));
         }
 
-        System.out.println("Самая быстрая машина: " + Race.bestCar.getSpeed() + " || Пройденная дистанция: " + Race.bestCar.getDistance() + "км");
+        System.out.println("Самая быстрая машина: " + Race.bestCar.getName() + " || Пройденная дистанция: " + Race.getBestCarDistance() + "км");
     }
 
     public static Car createCar(int carNumber) {
         String name;
         int speed;
 
-        System.out.println("- Введите имя машины №" + carNumber + ":");
+        System.out.print("- Введите имя машины №" + carNumber + ": ");
         name = sc.next();
 
         while (true) {
-            System.out.println("- Введите скорость машины №" + carNumber + ":");
+            System.out.print("- Введите скорость машины №" + carNumber + ": ");
 
             // Проверяем что ввод это целое число (и оно в диапазоне 1 - 250), если нет цикл продолжает вертеться [узнал про hasNextInt() в интернете]
             if (sc.hasNextInt()) {
@@ -48,8 +49,6 @@ public class Main {
                 System.out.println("Скорость автомобиля должна быть целым числом.");
             }
         }
-
-        Race.getBestCar(new Car(name, speed));
 
         return new Car(name, speed);
     }

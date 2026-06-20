@@ -12,10 +12,6 @@ public class Car {
         return name;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
     int getDistance() {
         return speed * ONE_DAY;
     }

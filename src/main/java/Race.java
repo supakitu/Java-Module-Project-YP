@@ -1,5 +1,5 @@
 public class Race {
-    static Car bestCar;
+    private static Car bestCar;
 
     public static void findBestCar(Car car) {
         if (bestCar != null && car.getDistance() > bestCar.getDistance()) {
@@ -9,11 +9,11 @@ public class Race {
         }
     }
 
-    public static String getBestCarName() {
+    static String getBestCarName() {
         return bestCar.getName();
     }
 
-    public static int getBestCarDistance() {
+    static int getBestCarDistance() {
         return bestCar.getDistance();
     }
 }

@@ -1,6 +1,6 @@
 public class Car {
-    final String name;
-    final int speed;
+    private final String name;
+    private final int speed;
     private static final int ONE_DAY = 24;
 
     public Car(String name, int speed) {
@@ -8,7 +8,7 @@ public class Car {
         this.speed = speed;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
